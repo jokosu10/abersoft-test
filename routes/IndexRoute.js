@@ -3,7 +3,6 @@ const router = express();
 
 const IndexRouter = require('../controllers/IndexController');
 
-router.get('/api/test', IndexRouter.index);
-router.get('/api/jokosu10', IndexRouter.joko);
+router.get('/ping', IndexRouter.index);
 
 module.exports = router;
