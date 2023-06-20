@@ -1,5 +1,4 @@
 'use strict';
-const bcrypt = require('bcryptjs');
 const { v4: uuidv4 } = require('uuid');
 
 module.exports = {
@@ -15,20 +14,24 @@ module.exports = {
       }], {});
     */
 
-    const uuid = uuidv4();
-    const email = "susilo.j8@gmail.com";
-
-    return queryInterface.bulkInsert(
-      "users",
-      [{
-        id: uuid,
-        username: "jokosu10",
-        email: email,
-        password: bcrypt.hashSync('1234567890', 10),
+    const dataProducts = [
+      {
+        id: uuidv4(),
+        name: "baju",
+        price: 10000,
         created_at: new Date(),
         updated_at: new Date()
-      }], {}
-    );
+      },
+      {
+        id: uuidv4(),
+        name: "celana",
+        price: 20000,
+        created_at: new Date(),
+        updated_at: new Date()
+      }
+    ];
+
+    return queryInterface.bulkInsert("products", dataProducts, {});
   },
 
   down: (queryInterface, Sequelize) => {
@@ -39,6 +42,6 @@ module.exports = {
       Example:
       return queryInterface.bulkDelete('People', null, {});
     */
-    return Sequelize.bulkDelete("users", null, {});
+    return Sequelize.bulkDelete("products", null, {});
   }
 };

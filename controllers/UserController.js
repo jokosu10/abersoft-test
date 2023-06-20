@@ -2,7 +2,6 @@ const Middleware = require('../middleware/Auth');
 const db = require('../models/Index');
 const bcrypt = require('bcryptjs');
 
-
 const login = async (req, res, next) => {
 
     try {

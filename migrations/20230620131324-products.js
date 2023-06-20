@@ -15,10 +15,18 @@ module.exports = {
         unique: true
       },
       price: {
-        type: Sequelize.NUMERIC,
-        defaultValue: 0,
-        allowNull: false,
+        type: Sequelize.INTEGER
       },
+      created_at: {
+        allowNull: true,
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.NOW
+      },
+      updated_at: {
+        allowNull: true,
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.NOW
+      }
     }),
   down: queryInterface => queryInterface.dropTable("products")
 };
