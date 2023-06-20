@@ -9,13 +9,18 @@ const cors = require("cors");
 const passport = require("passport");
 const morgan = require('morgan');
 
+
 const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 
-//require all the routes
-let IndexRouter = require("../routes/IndexRoute");
+const db = require("../models/Index");
 
-let server = express();
+//require all the routes
+const IndexRouter = require("../routes/IndexRoute");
+const UserRouter = require("../routes/UserRoute");
+
+
+const server = express();
 
 // configure app to use bodyParser
 server.use(bodyParser.json());
@@ -28,7 +33,9 @@ server.use(cookieParser());
 server.use(helmet());
 server.use(cors());
 server.use(headerParser);
-server.use(passport.initialize());
+// server.use(passport.initialize());
+
+db.sequelize.sync();
 
 /**
  * enable CORS
@@ -42,6 +49,7 @@ server.use((req, res, next) => {
 
 //prefix all the routes
 server.use(IndexRouter);
+server.use(UserRouter);
 
 // catch 404 and forward to error handler
 server.use(function (req, res, next) {
@@ -56,7 +64,9 @@ server.use(function (err, req, res, next) {
 
     // send the error page
     res.status(err.status || 500);
-    res.send('error');
+    res.json({ message: res.locals.message });
+
+    next();
 });
 
 module.exports = server;

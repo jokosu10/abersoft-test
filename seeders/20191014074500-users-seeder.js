@@ -15,18 +15,9 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
+
     const uuid = uuidv4();
     const email = "susilo.j8@gmail.com";
-
-    // Create token
-    const token = jwt.sign(
-      { userId: uuid, email: email },
-      process.env.TOKEN_KEY,
-      {
-        expiresIn: "2h",
-      }
-    );
-
 
     return queryInterface.bulkInsert(
       "users",
@@ -35,7 +26,6 @@ module.exports = {
         username: "jokosu10",
         email: email,
         password: bcrypt.hashSync('1234567890', 10),
-        token: token,
         created_at: new Date(),
         updated_at: new Date()
       }], {}

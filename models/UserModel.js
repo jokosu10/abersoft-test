@@ -1,11 +1,10 @@
 'use strict';
 const Sequelize = require("sequelize");
-const { v4: uuidv4 } = require('uuid');
 
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define("user", {
+  const User = sequelize.define("User", {
     id: {
-      type: DataTypes.UUID,
+      type: Sequelize.UUID,
       defaultValue: Sequelize.UUIDV4,
       primaryKey: true
     },
@@ -53,17 +52,6 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         notEmpty: {
           msg: "Please input password"
-        }
-      }
-    },
-    token: {
-      type: Sequelize.STRING,
-      defaultValue: "",
-      allowNull: false,
-      required: true,
-      validate: {
-        notEmpty: {
-          msg: "Please input token"
         }
       }
     },
