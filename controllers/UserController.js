@@ -30,8 +30,10 @@ const login = async (req, res, next) => {
                 const token = Middleware.generateToken(userData);
                 // Passwords match
                 return res.status(200).json({
-                    message: "Login Successfully",
-                    data: {
+                    status: "success",
+                    code: 200,
+                    message: "message from backend",
+                    results: {
                         token: token
                     }
                 });
