@@ -25,12 +25,6 @@ module.exports = {
         allowNull: false,
         required: true
       },
-      token: {
-        type: Sequelize.STRING,
-        defaultValue: "",
-        allowNull: false,
-        required: true
-      },
       created_at: {
         allowNull: true,
         type: Sequelize.DATE,
