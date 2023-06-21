@@ -1,6 +1,10 @@
 const Middleware = require('../middleware/Auth');
 const db = require('../models/Index');
 
+// const Order = require('../models/OrderModel');
+// const Product = require('../models/ProductModel');
+
+
 const postOrder = async (req, res, next) => {
     try {
         const token = req.headers.authorization;
@@ -51,6 +55,37 @@ const postOrder = async (req, res, next) => {
     }
 }
 
+const getOrder = async (req, res, next) => {
+    try {
+        const token = req.headers.authorization;
+        const verifyToken = Middleware.checkToken(token);
+
+        if (verifyToken.message === 'Token is valid') {
+
+            const orders = await db.Order.findAll({
+                include: {
+                    model: Product,
+                    as: 'products',
+                },
+            });
+
+            return res.status(200).json({
+                status: "success",
+                code: 200,
+                message: "message from backend",
+                results: {
+                    orders: orders
+                }
+            });
+        }
+    } catch (error) {
+        return res.status(500).json({
+            message: error.message
+        });
+    }
+}
+
 module.exports = {
-    postOrder
+    postOrder,
+    getOrder
 }
