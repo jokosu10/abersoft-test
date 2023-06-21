@@ -18,7 +18,7 @@ const db = require("../models/Index");
 //require all the routes
 const IndexRouter = require("../routes/IndexRoute");
 const UserRouter = require("../routes/UserRoute");
-
+const ProductRouter = require("../routes/ProductRoute");
 
 const server = express();
 
@@ -50,6 +50,7 @@ server.use((req, res, next) => {
 //prefix all the routes
 server.use(IndexRouter);
 server.use(UserRouter);
+server.use(ProductRouter);
 
 // catch 404 and forward to error handler
 server.use(function (req, res, next) {
