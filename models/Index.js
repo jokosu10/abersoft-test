@@ -39,6 +39,9 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 const userModel = require('./UserModel.js')(sequelize);
+const productModel = require('./ProductModel.js')(sequelize);
+
 db[userModel.name] = userModel;
+db[productModel.name] = productModel;
 
 module.exports = db;

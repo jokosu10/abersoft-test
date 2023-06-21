@@ -8,48 +8,38 @@ function generateToken(user) {
     return token;
 }
 
-const extractBearerToken = (req, res, next) => {
-    const authorizationHeader = req.headers.authorization;
+function checkToken(token) {
 
-    if (authorizationHeader && authorizationHeader.startsWith('Bearer ')) {
-        const token = authorizationHeader.slice(7);
-
-        req.token = token;
+    if (!token || !token.startsWith('Bearer ')) {
+        return { message: 'Invalid token when check token' };
     }
 
-    next();
-};
+    const formattedToken = token.split(' ')[1];
 
-const verifyToken = (req, res, next) => {
-    const token = req.token;
+    if (!formattedToken) {
+        return { message: "A token is required for authentication" }
+    }
 
-    if (token == null) {
-        return res.status(403).json({
-            message: "A token is required for authentication"
-        });
-    } else {
-        try {
-            jwt.verify(token, process.env.TOKEN_KEY, (err, decoded) => {
-                if (err) {
-                    return res.status(401).json({ error: 'Invalid token' });
-                }
+    try {
+        const decoded = jwt.verify(formattedToken, process.env.TOKEN_KEY);
+        // Check token expiration
+        const currentTimestamp = Math.floor(Date.now() / 1000); // Get current timestamp in seconds
 
-                // Attach the decoded token payload to the request object
-                req.decodedToken = decoded;
-
-                next();
-            });
-        } catch (err) {
-            return res.status(401).json({
-                message: "Missing Token"
-            });
+        if (decoded.exp < currentTimestamp) {
+            throw new Error('Token has expired');
+        }
+        decoded.message = 'Token is valid';
+        return decoded;
+    } catch (err) {
+        if (err.name === 'TokenExpiredError') {
+            throw new Error('Token has expired');
+        } else {
+            return { message: "Invalid token" }
         }
     }
-
-};
+}
 
 module.exports = {
     generateToken,
-    verifyToken,
-    extractBearerToken
+    checkToken
 };
