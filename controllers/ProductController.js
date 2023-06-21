@@ -103,9 +103,6 @@ const updateProductUsingPutById = async (req, res, next) => {
     }
 }
 
-
-
-
 module.exports = {
     getAllProduct,
     deleteProductById,
