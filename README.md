@@ -1,10 +1,4 @@
-# Structure Template NodeJS
-
-The structure template NodeJS.
-
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+# Coding Test Abersoft
 
 ### Prerequisites
 
@@ -12,30 +6,30 @@ Make sure you install this in your workspace.
 
 ```
 1. NodeJS LTS Version (recommended v10.15.x)
-2. NPM (recommended v6.9.x)
-2. Git (recommended v2.22.x)
+2. NPM (recommended v18.16.x)
+3. Git (recommended v2.25.x)
+4. PostgresSQL
 ```
 
 ### Installing
 
 Step by step for use this template to workspace.
 ```
-1. git clone https://github.com/jokosu10/template-framework-express.git
-2. cd template-framework-express
+1. git clone git@github.com:jokosu10/abersoft-test.git
+2. cd abersoft-test
 3. npm install
 4. cp .env.example .env
 5. set variable in .env
+6. run command db_create_development
+7. run command table_development
+8. run command seed_development
+9. import collection via link https://www.postman.com/blue-space-9704/workspace/for-public/collection/1684235-c9d1f4de-3726-4cf1-97cd-1fd63ef0eb5f?action=share&creator=1684235
 ```
 
 ## Running the apps
 Run this apps with command
 ```
-nodemon app.js
-```
-If you want to run apps with docker, run this apps with command
-```
-1. docker build -t <username>/template-node-app .
-2. docker run -p 49160:4000 -d <username>/template-node-app
+npm run dev
 ```
 
 ## Running the tests
@@ -49,10 +43,6 @@ npm run test
 
 * [Express JS](https://expressjs.com/) - The web framework used
 * [NPM](https://www.npmjs.com/) - Dependency Management
-
-## Authors
-
-* **Joko Susilo < jokosu10@opensuse.org >**
 
 ## License
 

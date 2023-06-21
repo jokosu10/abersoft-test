@@ -2,30 +2,14 @@
 module.exports = {
   // eslint-disable-next-line
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("products", {
+    await queryInterface.createTable("orders", {
       id: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
         primaryKey: true
       },
-      name: {
-        type: Sequelize.STRING,
-        defaultValue: "",
-        allowNull: false,
-        unique: true
-      },
-      price: {
+      total: {
         type: Sequelize.INTEGER
-      },
-      order_id: {
-        allowNull: true,
-        type: Sequelize.UUID,
-        references: {
-          model: 'orders',
-          key: 'id',
-        },
-        onUpdate: 'CASCADE',
-        onDelete: 'CASCADE',
       },
       created_at: {
         allowNull: true,
@@ -39,10 +23,9 @@ module.exports = {
       }
     });
 
-    // await queryInterface.addIndex("products", ['order_id']);
+    // await queryInterface.addIndex("orders", ["total"]);
   },
-
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("products");
+    await queryInterface.dropTable("orders");
   }
 };
