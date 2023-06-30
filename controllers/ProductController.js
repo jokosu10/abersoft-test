@@ -3,10 +3,8 @@ const db = require('../models/Index');
 
 const getAllProduct = async (req, res, next) => {
     try {
-
         const token = req.headers.authorization;
         const verifyToken = Middleware.checkToken(token);
-
         if (verifyToken.message === 'Token is valid') {
             const productData = await db.Product.findAll({ attributes: ['id', 'name', 'price'] });
 

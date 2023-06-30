@@ -6,9 +6,7 @@ const headerParser = require("header-parser");
 
 const helmet = require("helmet");
 const cors = require("cors");
-const passport = require("passport");
 const morgan = require('morgan');
-
 
 const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
@@ -34,7 +32,6 @@ server.use(cookieParser());
 server.use(helmet());
 server.use(cors());
 server.use(headerParser);
-// server.use(passport.initialize());
 
 db.sequelize.sync();
 
