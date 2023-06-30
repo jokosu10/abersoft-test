@@ -1,9 +1,7 @@
 const Middleware = require('../middleware/Auth');
 const db = require('../models/Index');
 
-// const Order = require('../models/OrderModel');
-// const Product = require('../models/ProductModel');
-
+const sequelize = require('sequelize');
 
 const postOrder = async (req, res, next) => {
     try {
@@ -63,10 +61,14 @@ const getOrder = async (req, res, next) => {
         if (verifyToken.message === 'Token is valid') {
 
             const orders = await db.Order.findAll({
-                include: {
-                    model: Product,
-                    as: 'products',
-                },
+                attributes: ['id', 'total'],
+                include: [
+                    {
+                        model: db.Product,
+                        as: 'products',
+                        attributes: ['id', 'name', 'price'],
+                    }
+                ]
             });
 
             return res.status(200).json({
