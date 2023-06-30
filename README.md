@@ -1,6 +1,6 @@
 # Coding Test Abersoft
 
-### Prerequisites
+## Prerequisites
 
 Make sure you install this in your workspace.
 
@@ -11,23 +11,39 @@ Make sure you install this in your workspace.
 4. PostgresSQL
 ```
 
-### Installing
+## Installing
 
-Step by step for use this template to workspace.
-```
-1. git clone git@github.com:jokosu10/abersoft-test.git
-2. cd abersoft-test
-3. npm install
-4. cp .env.example .env
-5. set variable in .env
-6. run command db_create_development
-7. run command table_development
-8. run command seed_development
-9. import collection via link https://www.postman.com/blue-space-9704/workspace/for-public/collection/1684235-c9d1f4de-3726-4cf1-97cd-1fd63ef0eb5f?action=share&creator=1684235
-```
+Step by step for running this project.
+
+1. Open your terminal and run this command 
+   ```
+   git clone git@github.com:jokosu10/abersoft-test.git
+   ```
+2. Enter your folder, using this command
+   ```
+   cd abersoft-test
+   ```
+3. Install dependency using NPM
+   ```
+   npm install
+   ```
+4. Copy example env to env, using this command
+   ```
+   cp .env.example .env
+   ```
+5. Set variable in .env
+6. Running this command for initial database and data
+   ```
+   npm run db_create_development
+   ```
+   ```
+   npm run migrate:development
+   ```
+7. import collection via link https://www.postman.com/blue-space-9704/workspace/for-public/collection/1684235-c9d1f4de-3726-4cf1-97cd-1fd63ef0eb5f?action=share&creator=1684235
+
 
 ## Running the apps
-Run this apps with command
+Run this apps with command in terminal
 ```
 npm run dev
 ```
