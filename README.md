@@ -1,14 +1,16 @@
 # Coding Test Abersoft
 
+This is coding test, when i apply to [Abersoft Technologies AB](https://www.abersoft.se/)
+
 ## Prerequisites
 
 Make sure you install this in your workspace.
 
 ```
-1. NodeJS LTS Version (recommended v10.15.x)
-2. NPM (recommended v18.16.x)
-3. Git (recommended v2.25.x)
-4. PostgresSQL
+1. NodeJS LTS Version (recommended v18.16.x)
+2. NPM (recommended v9.5.x)
+3. Git (recommended v2.34.x)
+4. PostgresSQL (recommended v15.3)
 ```
 
 ## Installing
@@ -39,7 +41,8 @@ Step by step for running this project.
    ```
    npm run migrate:development
    ```
-7. import collection via link https://www.postman.com/blue-space-9704/workspace/for-public/collection/1684235-c9d1f4de-3726-4cf1-97cd-1fd63ef0eb5f?action=share&creator=1684235
+7. import collection via link 
+   https://www.postman.com/blue-space-9704/workspace/for-public/collection/1684235-c9d1f4de-3726-4cf1-97cd-1fd63ef0eb5f?action=share&creator=1684235
 
 
 ## Running the apps
@@ -52,14 +55,10 @@ npm run dev
 
 Run the automated tests for this system with command
 ```
-npm run test
+npm run testing
 ```
 
 ## Built With
 
-* [Express JS](https://expressjs.com/) - The web framework used
+* [Express JS](https://expressjs.com/) - The web framework
 * [NPM](https://www.npmjs.com/) - Dependency Management
-
-## License
-
-This project is licensed under the MIT License.
