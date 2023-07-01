@@ -11,8 +11,6 @@ const morgan = require('morgan');
 const swaggerJSDoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 
-const db = require("../models/Index");
-
 //require all the routes
 const IndexRouter = require("../routes/IndexRoute");
 const UserRouter = require("../routes/UserRoute");
@@ -32,8 +30,6 @@ server.use(cookieParser());
 server.use(helmet());
 server.use(cors());
 server.use(headerParser);
-
-db.sequelize.sync();
 
 /**
  * enable CORS

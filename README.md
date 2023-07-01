@@ -15,7 +15,7 @@ Make sure you install this in your workspace.
 
 ## Installing
 
-Step by step for running this project.
+Step by step running this project in environment development.
 
 1. Open your terminal and run this command 
    ```
@@ -52,12 +52,19 @@ npm run dev
 ```
 
 ## Running the tests
+Step by step running unit testing on this project in environment testing.
 
-Run the automated tests for this system with command
-```
-npm run testing
-```
-
+1. Running this command for initial database and data
+   ```
+   npm run db_create_testing
+   ```
+   ```
+   npm run migrate:testing
+   ```
+2. Run the automated tests for this system with command
+   ```
+   npm run testing
+   ```
 ## Built With
 
 * [Express JS](https://expressjs.com/) - The web framework
