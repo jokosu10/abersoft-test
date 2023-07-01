@@ -46,4 +46,38 @@ describe('POST /login', () => {
 			expect(error).toBe(error);
 		}
 	});
+
+	it('should error because invalid email or password', async () => {
+		const email = "susilo.j10@gmail.com";
+		const password = "1234567890";
+
+		const response = await request(app)
+			.post('/login')
+			.set("Accept", "application/json")
+			.send({ email: email, password: password })
+			.expect(401);
+
+		expect(response.status).toBe(401);
+
+		expect(response.body).toMatchObject({
+			message: expect.any(String)
+		});
+	});
+
+	it('should error because result compare password with bcrypt is not valid', async () => {
+		const email = "susilo.j10@gmail.com";
+		const password = "1234567890";
+
+		const response = await request(app)
+			.post('/login')
+			.set("Accept", "application/json")
+			.send({ email: email, password: password })
+			.expect(401);
+
+		expect(response.status).toBe(401);
+
+		expect(response.body).toMatchObject({
+			message: expect.any(String)
+		});
+	});
 });

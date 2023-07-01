@@ -12,7 +12,7 @@ const login = async (req, res, next) => {
 
         // Check if the user exists
         if (!userData) {
-            return res.status(401).json({ message: 'Invalid username or password' });
+            return res.status(401).json({ message: 'Invalid email or password' });
         }
 
         const storedHashedPassword = userData.password;
