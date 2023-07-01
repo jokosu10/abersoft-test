@@ -4,6 +4,14 @@ const db = require('../models/Index');
 const getAllProduct = async (req, res, next) => {
     try {
         const token = req.headers.authorization;
+
+        if (!token) {
+            return res.status(401).json({
+                code: 401,
+                message: "A token is required for authentication",
+            });
+        }
+
         const verifyToken = Middleware.checkToken(token);
         if (verifyToken.message === 'Token is valid') {
             const productData = await db.Product.findAll({ attributes: ['id', 'name', 'price'] });
@@ -28,6 +36,14 @@ const deleteProductById = async (req, res, next) => {
     try {
 
         const token = req.headers.authorization;
+
+        if (!token) {
+            return res.status(401).json({
+                code: 401,
+                message: "A token is required for authentication",
+            });
+        }
+
         const verifyToken = Middleware.checkToken(token);
         const { uuid } = req.body;
 
@@ -61,6 +77,14 @@ const updateProductUsingPutById = async (req, res, next) => {
     try {
 
         const token = req.headers.authorization;
+
+        if (!token) {
+            return res.status(401).json({
+                code: 401,
+                message: "A token is required for authentication",
+            });
+        }
+
         const verifyToken = Middleware.checkToken(token);
         const paramValue = req.query.uuid;
         const { name, price } = req.body;
