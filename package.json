@@ -13,6 +13,7 @@
     "migrate:testing": "cross-env NODE_ENV=test ./node_modules/.bin/sequelize db:migrate && cross-env NODE_ENV=test ./node_modules/.bin/sequelize db:seed:all",
     "migrate:testing:reset": "cross-env NODE_ENV=test ./node_modules/.bin/sequelize db:migrate:undo:all",
     "testing": "cross-env NODE_ENV=test jest __tests__ --detectOpenHandles",
+    "test": "jest",
     "dev": "./node_modules/.bin/nodemon app.js"
   },
   "jest": {
