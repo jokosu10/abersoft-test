@@ -5,10 +5,9 @@ const hello = (req, res, next) => {
 };
 
 const ping = (req, res, next) => {
-  // Create a new Date object
+
   const currentDateTime = new Date();
 
-  // Convert the date to a string
   const formattedDateTime = currentDateTime.toString();
 
   res.status(200).json({
