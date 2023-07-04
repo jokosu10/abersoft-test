@@ -1,11 +1,17 @@
 const Middleware = require('../middleware/Auth');
 const db = require('../models/Index');
 
-const sequelize = require('sequelize');
-
 const postOrder = async (req, res, next) => {
     try {
         const token = req.headers.authorization;
+
+        if (!token) {
+            return res.status(401).json({
+                code: 401,
+                message: "A token is required for authentication",
+            });
+        }
+
         const verifyToken = Middleware.checkToken(token);
 
         if (verifyToken.message === 'Token is valid') {
@@ -56,6 +62,14 @@ const postOrder = async (req, res, next) => {
 const getOrder = async (req, res, next) => {
     try {
         const token = req.headers.authorization;
+
+        if (!token) {
+            return res.status(401).json({
+                code: 401,
+                message: "A token is required for authentication",
+            });
+        }
+
         const verifyToken = Middleware.checkToken(token);
 
         if (verifyToken.message === 'Token is valid') {
